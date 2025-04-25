@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ImperConstru Engenharia</title>
+        <link rel="stylesheet" href="header.css">
+        <link rel="stylesheet" href="comum.css">
+    </head>
+    <body>
+        <header>
+            <div class="logo">Imperconstru</div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <nav class="nav-menu" onclick="event.stopPropagation()">
+                <div class="close-menu" onclick="toggleMenu()">✖</div>
+                <a href="#" onclick="toggleMenu()">Home</a>
+                <a href="#" onclick="toggleMenu()">Produto</a>
+                <a href="#" onclick="toggleMenu()">Serviços</a>
+                <a href="#" onclick="toggleMenu()">Contato</a>
+            </nav>
+        </header>
+    
+        <!-- Overlay para menu mobile -->
+        <div class="overlay" onclick="toggleMenu()"></div>
+    
+        <section class="content-container" onclick="closeMenu()">
+            <div class="video-container">
+                <video src="midia/telhado01.1.mp4" autoplay loop muted></video>
+            </div>
+            <div class="text-container">
+                <p>Na Imperconstru, a impermeabilização de telhados é o nosso carro-chefe, garantindo soluções completas para proteger e restaurar estruturas contra infiltrações e danos.</p>
+                <p>Além disso, expandimos nossa atuação para incluir serviços gerais de obras civis, como pintura e alvenaria.</p>
+                <p>Também oferecemos o <strong>Impersek</strong>, um produto de alta qualidade desenvolvido para maximizar a proteção e eficácia em nossos projetos.</p>
+            </div>
+        </section>
+    
+        <section class="services">
+            <h2>Nossos Serviços</h2>
+            <ul>
+                <li><strong>Impermeabilização e Restauração de Telhados</strong> - Proteção completa contra infiltrações.</li>
+                <li><strong>Obras Civis</strong> - Pintura, alvenaria e acabamentos.</li>
+                <li><strong>Produtos Especializados</strong> - <strong>Impersek</strong>, a solução definitiva em impermeabilização.</li>
+            </ul>
+        </section>
+    
+        <section class="contact">
+            <h2>Fale Conosco</h2>
+            <p>Entre em contato com nossa equipe para conhecer nossas soluções e descobrir como podemos atender às suas necessidades com excelência e confiança.</p>
+        </section>
+    
+        <footer>
+            <p>&copy; 2025 Imperconstru - Construa com Confiança, Proteja com Excelência.</p>
+        </footer>
+    
+    
+      </body>
+    </html>
+    

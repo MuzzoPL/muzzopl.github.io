@@ -1,0 +1,26 @@
+*{
+    max-width: 98%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabeçalho */
+header>ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+header>ul>li{
+    font-size: 17px;
+}
+header{
+    background-color: lightgray;
+    padding: 20px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.363);
+    width: 80%;
+    margin: auto;
+    border-radius: 0px 0px 30px 30px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.37);
+    margin-bottom: 20px;
+}
