@@ -1,58 +1,542 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ImperConstru Engenharia</title>
-        <link rel="stylesheet" href="header.css">
-        <link rel="stylesheet" href="comum.css">
-    </head>
-    <body>
-        <header>
-            <div class="logo">Imperconstru</div>
-            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-            <nav class="nav-menu" onclick="event.stopPropagation()">
-                <div class="close-menu" onclick="toggleMenu()">✖</div>
-                <a href="#" onclick="toggleMenu()">Home</a>
-                <a href="#" onclick="toggleMenu()">Produto</a>
-                <a href="#" onclick="toggleMenu()">Serviços</a>
-                <a href="#" onclick="toggleMenu()">Contato</a>
-            </nav>
-        </header>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imperconstru - Serviços Especializados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="comum.css">
     
-        <!-- Overlay para menu mobile -->
-        <div class="overlay" onclick="toggleMenu()"></div>
-    
-        <section class="content-container" onclick="closeMenu()">
-            <div class="video-container">
-                <video src="midia/telhado01.1.mp4" autoplay loop muted></video>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#E6F4FF',
+                            DEFAULT: '#1890FF',
+                            dark: '#096DD9',
+                        },
+                        neutral: {
+                            50: '#FAFAFA',
+                            100: '#F5F5F5',
+                            200: '#EEEEEE',
+                            300: '#E0E0E0',
+                            400: '#BDBDBD',
+                            500: '#9E9E9E',
+                            600: '#757575',
+                            700: '#616161',
+                            800: '#424242',
+                            900: '#212121',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(245,245,245,0.9) 0%, rgba(230,244,255,0.9) 100%);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: scale(1.03);
+        }
+        .testimonial-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f5f5f5 100%);
+        }
+    </style>
+</head>
+<body class="font-sans bg-neutral-50 text-neutral-800">
+
+    <!-- botão do whatsapp -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <a href="https://wa.me/5511999999999?text=Olá, gostaria de mais informações" 
+           target="_blank" 
+           class="whatsapp-button flex items-center justify-center w-16 h-16 rounded-full bg-[#25D366] text-white relative">
+            <i class="fab fa-whatsapp text-3xl"></i>
+            <span class="whatsapp-tooltip absolute whitespace-nowrap bg-gray-800 text-white px-3 py-1 rounded-lg text-sm font-medium">
+                Fale conosco!
+            </span>
+        </a>
+    </div>
+    <!-- Header/Navbar -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="midia/logo.png" alt="Imperconstru - Serviços Especializados" style="max-width:150px ;">
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="font-medium hover:text-primary transition">Início</a>
+                    <a href="#servicos" class="font-medium hover:text-primary transition">Serviços</a>
+                    <a href="#sobre" class="font-medium hover:text-primary transition">Sobre Nós</a>
+                    <a href="#contato" class="font-medium hover:text-primary transition">Contato</a>
+                </nav>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-neutral-600 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
             </div>
-            <div class="text-container">
-                <p>Na Imperconstru, a impermeabilização de telhados é o nosso carro-chefe, garantindo soluções completas para proteger e restaurar estruturas contra infiltrações e danos.</p>
-                <p>Além disso, expandimos nossa atuação para incluir serviços gerais de obras civis, como pintura e alvenaria.</p>
-                <p>Também oferecemos o <strong>Impersek</strong>, um produto de alta qualidade desenvolvido para maximizar a proteção e eficácia em nossos projetos.</p>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#inicio" class="block py-2 hover:text-primary transition">Início</a>
+                <a href="#servicos" class="block py-2 hover:text-primary transition">Serviços</a>
+                <a href="#sobre" class="block py-2 hover:text-primary transition">Sobre Nós</a>
+                <a href="#contato" class="block py-2 hover:text-primary transition">Contato</a>
             </div>
-        </section>
-    
-        <section class="services">
-            <h2>Nossos Serviços</h2>
-            <ul>
-                <li><strong>Impermeabilização e Restauração de Telhados</strong> - Proteção completa contra infiltrações.</li>
-                <li><strong>Obras Civis</strong> - Pintura, alvenaria e acabamentos.</li>
-                <li><strong>Produtos Especializados</strong> - <strong>Impersek</strong>, a solução definitiva em impermeabilização.</li>
-            </ul>
-        </section>
-    
-        <section class="contact">
-            <h2>Fale Conosco</h2>
-            <p>Entre em contato com nossa equipe para conhecer nossas soluções e descobrir como podemos atender às suas necessidades com excelência e confiança.</p>
-        </section>
-    
-        <footer>
-            <p>&copy; 2025 Imperconstru - Construa com Confiança, Proteja com Excelência.</p>
-        </footer>
-    
-    
-      </body>
-    </html>
-    
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-gradient py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-neutral-800">Proteção Completa para Seu <span class="text-primary">Telhado</span></h1>
+                <p class="text-lg mb-8 text-neutral-600">Soluções profissionais em impermeabilização com materiais de alta qualidade e mão de obra especializada.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contato" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition text-center">Solicitar Orçamento</a>
+                    <a href="#servicos" class="border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-primary-light transition text-center">Nossos Serviços</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                     alt="Telhado impermeabilizado" 
+                     class="rounded-lg shadow-xl w-full max-w-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-neutral-800">Nossos <span class="text-primary">Serviços</span></h2>
+                <p class="text-neutral-600 max-w-2xl mx-auto">Especializados em impermeabilização de telhados com técnicas modernas e materiais de última geração.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-md p-6 transition duration-300">
+                    <div class="bg-primary-light rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                        <i class="fas fa-house-damage text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-neutral-800">Impermeabilização de Telhados</h3>
+                    <p class="text-neutral-600 mb-4">Proteção completa contra infiltrações com membranas líquidas e mantas asfálticas de alta qualidade.</p>
+                    <ul class="text-neutral-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                            <span>Prevenção de goteiras</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                            <span>Materiais resistentes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                            <span>Garantia estendida</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-md p-6 transition duration-300">
+                    <div class="bg-primary-light rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                        <i class="fas fa-tools text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-neutral-800">Manutenção Preventiva</h3>
+                    <p class="text-neutral-600 mb-4">Inspeção e manutenção periódica para prolongar a vida útil do seu telhado e evitar problemas futuros.</p>
+                    <ul class="text-neutral-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                            <span>Diagnóstico completo</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                            <span>Reparos pontuais</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                            <span>Relatório técnico</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-md p-6 transition duration-300">
+                    <div class="bg-primary-light rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                        <i class="fas fa-building text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-neutral-800">Impermeabilização de Lajes</h3>
+                    <p class="text-neutral-600 mb-4">Proteção para lajes expostas, terraços e áreas externas contra umidade e infiltrações.</p>
+                    <ul class="text-neutral-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                            <span>Soluções para áreas planas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                            <span>Resistência a tráfego</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                            <span>Proteção UV</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+                
+            
+            <div id="produtosdiv" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-neutral-200 flex items-center justify-center">
+                        <i class="fas fa-medal text-5xl text-neutral-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 text-neutral-800">Manta Asfáltica Premium</h3>
+                        <p class="text-neutral-600 text-sm mb-4">Manta auto-aderente de alta resistência para telhados inclinados.</p>
+                        <div class="flex justify-between items-center">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-neutral-200 flex items-center justify-center">
+                        <i class="fas fa-flag  text-5xl text-neutral-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 text-neutral-800">Empresa Nacional</h3>
+                        <p class="text-neutral-600 text-sm mb-4">Empresa Brasileira, atuante em todo território nacional</p>
+                        <div class="flex justify-between items-center">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-neutral-200 flex items-center justify-center">
+                        <i class="fas fa-crown text-5xl text-neutral-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 text-neutral-800">+30 anos de atuação</h3>
+                        <p class="text-neutral-600 text-sm mb-4">Atuamos há 34 anos no mercado se especializando e evoluindo tecnologicamente.</p>
+                        <div class="flex justify-between items-center">
+                        </div>
+                    </div>
+                </div>
+                
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-12">
+                    <img src="midia/telhado02.jpeg" 
+                         alt="Equipe Imperconstru" 
+                         class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6 text-neutral-800">Sobre a <span class="text-primary">Imperconstru</span></h2>
+                    <p class="text-neutral-600 mb-6">Com mais de 30 anos de experiência no mercado, a Imperconstru se consolidou como referência em impermeabilização de telhados e lajes na região.</p>
+                    <p class="text-neutral-600 mb-6">Nossa equipe é composta por profissionais altamente qualificados e certificados, utilizando apenas materiais de primeira linha e técnicas atualizadas para garantir a melhor proteção para sua propriedade.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-primary-light rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-medal text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-neutral-800">Qualidade Garantida</h4>
+                                <p class="text-neutral-600">Todos os nossos serviços possuem garantia contratual para sua tranquilidade.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary-light rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-award text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-neutral-800">Certificações</h4>
+                                <p class="text-neutral-600">Somos certificados pelos principais fabricantes de materiais de impermeabilização.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary-light rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-shield-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-neutral-800">Segurança</h4>
+                                <p class="text-neutral-600">Trabalhamos com todos os equipamentos de segurança necessários para serviços em altura.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-neutral-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-neutral-800">Algumas obras <span class="text-primary">parceiras</span></h2>
+                <p class="text-neutral-600 max-w-2xl mx-auto">Algumas obras parceiras que realizamos neste ultimo ano</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card rounded-lg p-6 shadow-sm">
+                <img src="midia/penaltylogo.png" alt="">
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card rounded-lg p-6 shadow-sm">
+                    <img src="midia/centernortelogo.jpg" alt="">
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card rounded-lg p-6 shadow-sm">
+                   ?
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-neutral-800">Entre em <span class="text-primary">Contato</span></h2>
+                <p class="text-neutral-600 max-w-2xl mx-auto">Solicite um orçamento ou tire suas dúvidas sobre nossos serviços e produtos.</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-12">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-neutral-700 mb-2">Nome</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-neutral-700 mb-2">E-mail</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-neutral-700 mb-2">Telefone</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-neutral-700 mb-2">Assunto</label>
+                            <select id="subject" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="">Selecione...</option>
+                                <option value="orcamento">Solicitar Orçamento</option>
+                                <option value="duvida">Tirar Dúvidas</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-neutral-700 mb-2">Mensagem</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-primary-light rounded-lg p-8 h-full">
+                        <h3 class="text-xl font-semibold mb-6 text-neutral-800">Nossos <span class="text-primary">Contatos</span></h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-neutral-800 mb-1">Endereço</h4>
+                                    <p class="text-neutral-600">Rua das Construções, 123<br>Bairro Industrial<br>São Paulo - SP</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-neutral-800 mb-1">Telefones</h4>
+                                    <p class="text-neutral-600">(11) 1234-5678<br>(11) 98765-4321 (WhatsApp)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-neutral-800 mb-1">E-mail</h4>
+                                    <p class="text-neutral-600">contato@Imperconstru.com.br</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-neutral-800 mb-1">Horário de Atendimento</h4>
+                                    <p class="text-neutral-600">Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-neutral-800 mb-4">Siga-nos nas redes sociais</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-white text-primary w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-white text-primary w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-white text-primary w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="bg-white text-primary w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-800 text-neutral-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="midia/logo.png" alt="Imperconstru - Serviços Especializados" style="max-width:150px ;">   
+                    </div>
+                    <p class="mb-4">Soluções profissionais em impermeabilização com qualidade e garantia.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-neutral-300 hover:text-primary transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-neutral-300 hover:text-primary transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-neutral-300 hover:text-primary transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4 text-lg">Links Úteis</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="hover:text-primary transition">Início</a></li>
+                        <li><a href="#servicos" class="hover:text-primary transition">Serviços</a></li>
+                        <li><a href="#sobre" class="hover:text-primary transition">Sobre Nós</a></li>
+                        <li><a href="#contato" class="hover:text-primary transition">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4 text-lg">Serviços</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-primary transition">Impermeabilização de Telhados</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Manutenção Preventiva</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Impermeabilização de Lajes</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Venda de Materiais</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Consultoria Técnica</a></li>
+                    </ul>
+                </div>
+                
+                
+            </div>
+            
+            <div class="border-t border-neutral-700 mt-12 pt-8 text-center">
+                <p>&copy; 2023 Imperconstru - Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-primary-dark transition hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
