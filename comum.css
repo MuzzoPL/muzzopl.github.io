@@ -49,9 +49,13 @@
     font-size: 60px;
 }
 .testimonial-card{
-    min-height: 200px;
+    min-height: 250px;
     align-self: center;
     align-items: center;
     justify-content: center;
     display: flex;
+    max-height:250px ;
+}
+.testimonial-card img{
+    max-height:180px
 }
