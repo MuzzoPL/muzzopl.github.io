@@ -3,190 +3,369 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imperconstru - Serviços Especializados</title>
+    <title>Imperconstru | Impermeabilização e Reformas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="comum.css">
-    <link rel="icon" href="midia/favIcon.png" type="image/x-icon">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            light: '#E6F4FF',
-                            DEFAULT: '#1890FF',
-                            dark: '#096DD9',
-                        },
-                        neutral: {
-                            50: '#FAFAFA',
-                            100: '#F5F5F5',
-                            200: '#EEEEEE',
-                            300: '#E0E0E0',
-                            400: '#BDBDBD',
-                            500: '#9E9E9E',
-                            600: '#757575',
-                            700: '#616161',
-                            800: '#424242',
-                            900: '#212121',
-                        }
-                    }
-                }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -20px;
+            width: 2px;
+            height: 20px;
+            background-color: #3b82f6;
+        }
+        
+        .floating-whatsapp {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
             }
         }
-    </script>
-    <style>
-        .hero-gradient {
-            background: linear-gradient(135deg, rgba(245,245,245,0.9) 0%, rgba(230,244,255,0.9) 100%);
+        
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.5s ease-in, transform 0.5s ease-in;
         }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        .product-card {
-            transition: all 0.3s ease;
+        
+        .fade-up {
+            transform: translateY(20px);
         }
-        .product-card:hover {
-            transform: scale(1.03);
+        
+        .fade-left {
+            transform: translateX(-20px);
         }
-        .testimonial-card {
-            background: linear-gradient(145deg, #ffffff 0%, #f5f5f5 100%);
+        
+        .fade-right {
+            transform: translateX(20px);
         }
     </style>
 </head>
-<body class="font-sans bg-neutral-50 text-neutral-800">
+<body class="bg-gray-50">
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5511999999999" target="_blank" class="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-xl z-50 floating-whatsapp hover:bg-green-600 transition duration-300">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
 
-    <!-- botão do whatsapp -->
-    <div class="fixed bottom-8 right-8 z-50">
-        <a href="https://wa.me/5511982067234?text=Olá, gostaria de mais informações" 
-           target="_blank" 
-           class="whatsapp-button flex items-center justify-center w-16 h-16 rounded-full bg-[#25D366] text-white relative">
-            <i class="fab fa-whatsapp text-3xl"></i>
-            <span class="whatsapp-tooltip absolute whitespace-nowrap bg-gray-800 text-white px-3 py-1 rounded-lg text-sm font-medium">
-                Fale conosco!
-            </span>
-        </a>
-    </div>
-    <!-- Header/Navbar -->
-    <header class="sticky top-0 z-50 bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center">
-                    <img src="midia/logo.png" alt="Imperconstru - Serviços Especializados" style="max-width:150px ;">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="bg-blue-600 text-white p-2 rounded mr-3">
+                    <i class="fas fa-building-shield text-2xl"></i>
                 </div>
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#inicio" class="font-medium hover:text-primary transition">Início</a>
-                    <a href="#servicos" class="font-medium hover:text-primary transition">Serviços</a>
-                    <a href="#sobre" class="font-medium hover:text-primary transition">Sobre Nós</a>
-                    <a href="#contato" class="font-medium hover:text-primary transition">Contato</a>
-                </nav>
-                <div class="md:hidden">
-                    <button id="menu-toggle" class="text-neutral-600 hover:text-primary focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
+                <h1 class="text-2xl font-bold text-gray-800">Imper<span class="text-blue-600">Constru</span></h1>
             </div>
-            <!-- Mobile menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
-                <a href="#inicio" class="block py-2 hover:text-primary transition">Início</a>
-                <a href="#servicos" class="block py-2 hover:text-primary transition">Serviços</a>
-                <a href="#sobre" class="block py-2 hover:text-primary transition">Sobre Nós</a>
-                <a href="#contato" class="block py-2 hover:text-primary transition">Contato</a>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-800 hover:text-blue-600 font-medium">Início</a>
+                <a href="#about" class="text-gray-800 hover:text-blue-600 font-medium">Sobre</a>
+                <a href="#services" class="text-gray-800 hover:text-blue-600 font-medium">Serviços</a>
+                <a href="#products" class="text-gray-800 hover:text-blue-600 font-medium">Produtos</a>
+                <a href="#projects" class="text-gray-800 hover:text-blue-600 font-medium">Projetos</a>
+                <a href="#contact" class="text-gray-800 hover:text-blue-600 font-medium">Contato</a>
+            </nav>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-800 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4 shadow-lg">
+            <a href="#home" class="block py-2 text-gray-800 hover:text-blue-600">Início</a>
+            <a href="#about" class="block py-2 text-gray-800 hover:text-blue-600">Sobre</a>
+            <a href="#services" class="block py-2 text-gray-800 hover:text-blue-600">Serviços</a>
+            <a href="#products" class="block py-2 text-gray-800 hover:text-blue-600">Produtos</a>
+            <a href="#projects" class="block py-2 text-gray-800 hover:text-blue-600">Projetos</a>
+            <a href="#contact" class="block py-2 text-gray-800 hover:text-blue-600">Contato</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero-gradient py-20">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-neutral-800">Proteção Completa para Seu <span class="text-primary">Telhado</span></h1>
-                <p class="text-lg mb-8 text-neutral-600">Soluções profissionais em impermeabilização com materiais de alta qualidade e mão de obra especializada.</p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#contato" class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition text-center">Solicitar Orçamento</a>
-                    <a href="#servicos" class="border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-primary-light transition text-center">Nossos Serviços</a>
+    <section id="home" class="hero min-h-screen flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in visible">Soluções em Impermeabilização <span class="text-blue-400">Há 30 Anos</span></h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto fade-in visible">Proteção e qualidade para sua construção com tecnologia e expertise nacional</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="tel:+5511999999999" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-medium transition duration-300 flex items-center justify-center fade-in visible">
+                    <i class="fas fa-phone mr-2"></i> Ligue agora
+                </a>
+                <a href="https://wa.me/5511999999999" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-medium transition duration-300 flex items-center justify-center fade-in visible">
+                    <i class="fab fa-whatsapp mr-2"></i> Fale no WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl transition duration-300 fade-in fade-up">
+                    <div class="bg-blue-100 text-blue-600 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-calendar-check text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">30 Anos de Experiência</h3>
+                    <p class="text-gray-600">Tradição e conhecimento acumulado em milhares de projetos executados</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl transition duration-300 fade-in fade-up">
+                    <div class="bg-blue-100 text-blue-600 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-map-marked-alt text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Atuação Nacional</h3>
+                    <p class="text-gray-600">Presente em todo o território brasileiro com equipes especializadas</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl transition duration-300 fade-in fade-up">
+                    <div class="bg-blue-100 text-blue-600 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-certificate text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Certificações</h3>
+                    <p class="text-gray-600">Sistemas e produtos com certificação ABNT e selos de qualidade internacional</p>
                 </div>
             </div>
-            <div class="md:w-1/2 flex justify-center">
-                <video src="midia/telhado01.1.mp4" style="border-radius: 40px;" autoplay playsinline loop></video>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nossa <span class="text-blue-600">História</span></h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-8">
+                <div class="lg:w-1/2 fade-in fade-left">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Equipe Imperconstru" class="rounded-lg shadow-lg w-full">
+                </div>
+                
+                <div class="lg:w-1/2 fade-in fade-right">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Construindo confiança desde 1993</h3>
+                    <p class="text-gray-600 mb-6">Fundada em São Paulo, a Imperconstru surgiu com a missão de trazer soluções eficientes em impermeabilização para o mercado brasileiro. Ao longo de três décadas, expandimos nossa atuação para todo o país, sempre mantendo o compromisso com a excelência técnica e a satisfação dos clientes.</p>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-xl font-semibold text-gray-800 mb-2">Nossa Missão</h4>
+                        <p class="text-gray-600">Proporcionar segurança e durabilidade às construções através de sistemas de impermeabilização de alta performance, garantindo tranquilidade aos nossos clientes.</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-xl font-semibold text-gray-800 mb-2">Nossa Visão</h4>
+                        <p class="text-gray-600">Ser reconhecida como referência nacional em soluções para impermeabilização, inovando continuamente para atender às demandas do mercado.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timeline -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-8 fade-in">Nossa <span class="text-blue-600">Trajetória</span></h3>
+                
+                <div class="relative">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="timeline-item relative text-center p-6 bg-blue-50 rounded-lg fade-in fade-up">
+                            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h4 class="font-bold text-blue-600 mb-2">1993</h4>
+                            <p class="text-gray-700">Fundação da empresa em São Paulo com foco em impermeabilização residencial</p>
+                        </div>
+                        
+                        <div class="timeline-item relative text-center p-6 bg-blue-50 rounded-lg fade-in fade-up">
+                            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                            <h4 class="font-bold text-blue-600 mb-2">2005</h4>
+                            <p class="text-gray-700">Expansão para o mercado corporativo e início da atuação nacional</p>
+                        </div>
+                        
+                        <div class="timeline-item relative text-center p-6 bg-blue-50 rounded-lg fade-in fade-up">
+                            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h4 class="font-bold text-blue-600 mb-2">2020</h4>
+                            <p class="text-gray-700">Certificação ISO 9001 e prêmio de excelência no setor</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="servicos" class="py-16 bg-white">
+    <section id="services" class="py-16 bg-gray-100">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4 text-neutral-800">Nossos <span class="text-primary">Serviços</span></h2>
-                <p class="text-neutral-600 max-w-2xl mx-auto">Especializados em impermeabilização de telhados com técnicas modernas e materiais de última geração.</p>
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nossos <span class="text-blue-600">Serviços</span></h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Soluções completas em impermeabilização e reformas para todos os tipos de construção</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="service-card bg-white rounded-lg overflow-hidden shadow-md p-6 transition duration-300">
-                    <div class="bg-primary-light rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                        <i class="fas fa-house-damage text-primary text-2xl"></i>
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 fade-in fade-up">
+                    <div class="bg-blue-100 text-blue-600 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-roofing text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3 text-neutral-800">Impermeabilização de Telhados</h3>
-                    <p class="text-neutral-600 mb-4">Proteção completa contra infiltrações com membranas líquidas e mantas asfálticas de alta qualidade.</p>
-                    <ul class="text-neutral-600 space-y-2">
+                    <h3 class="text-xl font-bold mb-3">Impermeabilização de Telhados</h3>
+                    <p class="text-gray-600 mb-4">Sistemas avançados para proteção contra infiltrações em telhados planos e inclinados, com garantia estendida.</p>
+                    <ul class="text-gray-600 space-y-2">
                         <li class="flex items-start">
-                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
-                            <span>Prevenção de goteiras</span>
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Membranas asfálticas</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
-                            <span>Materiais resistentes</span>
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Poliureia</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
-                            <span>Garantia estendida</span>
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Membranas líquidas</span>
                         </li>
                     </ul>
                 </div>
                 
-                <!-- Service 2 -->
-                <div class="service-card bg-white rounded-lg overflow-hidden shadow-md p-6 transition duration-300">
-                    <div class="bg-primary-light rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                        <i class="fas fa-tools text-primary text-2xl"></i>
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 fade-in fade-up">
+                    <div class="bg-blue-100 text-blue-600 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-building text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3 text-neutral-800">Manutenção Preventiva</h3>
-                    <p class="text-neutral-600 mb-4">Inspeção e manutenção periódica para prolongar a vida útil do seu telhado e evitar problemas futuros.</p>
-                    <ul class="text-neutral-600 space-y-2">
+                    <h3 class="text-xl font-bold mb-3">Impermeabilização de Lajes</h3>
+                    <p class="text-gray-600 mb-4">Proteção eficiente para lajes expostas e jardins de cobertura, com sistemas específicos para cada necessidade.</p>
+                    <ul class="text-gray-600 space-y-2">
                         <li class="flex items-start">
-                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
-                            <span>Diagnóstico completo</span>
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Manta asfáltica</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
-                            <span>Reparos pontuais</span>
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Argamassa polimérica</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
-                            <span>Relatório técnico</span>
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Impermeabilizante cristalizante</span>
                         </li>
                     </ul>
                 </div>
                 
-                <!-- Service 3 -->
-                <div class="service-card bg-white rounded-lg overflow-hidden shadow-md p-6 transition duration-300">
-                    <div class="bg-primary-light rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                        <i class="fas fa-building text-primary text-2xl"></i>
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 fade-in fade-up">
+                    <div class="bg-blue-100 text-blue-600 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-water text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3 text-neutral-800">Impermeabilização de Lajes</h3>
-                    <p class="text-neutral-600 mb-4">Proteção para lajes expostas, terraços e áreas externas contra umidade e infiltrações.</p>
-                    <ul class="text-neutral-600 space-y-2">
+                    <h3 class="text-xl font-bold mb-3">Impermeabilização de Piscinas</h3>
+                    <p class="text-gray-600 mb-4">Tecnologia avançada para piscinas de concreto, fibra e vinil, garantindo estanqueidade total.</p>
+                    <ul class="text-gray-600 space-y-2">
                         <li class="flex items-start">
-                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
-                            <span>Soluções para áreas planas</span>
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Membrana líquida</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
-                            <span>Resistência a tráfego</span>
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Revestimento epóxi</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-primary mr-2 mt-1"></i>
-                            <span>Proteção UV</span>
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Impermeabilização estrutural</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 fade-in fade-up">
+                    <div class="bg-blue-100 text-blue-600 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-bath text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Impermeabilização de Banheiros</h3>
+                    <p class="text-gray-600 mb-4">Soluções específicas para áreas molhadas, garantindo proteção contra infiltrações e umidade.</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Membrana líquida</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Chapisco impermeabilizante</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Tratamento de juntas</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 fade-in fade-up">
+                    <div class="bg-blue-100 text-blue-600 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-warehouse text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Impermeabilização de Subsolos</h3>
+                    <p class="text-gray-600 mb-4">Proteção contra umidade ascendente e pressão hidrostática em áreas enterradas.</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Drenagem perimetral</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Barreiras químicas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Injeção de resinas</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 fade-in fade-up">
+                    <div class="bg-blue-100 text-blue-600 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-hammer text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Reformas e Recuperação</h3>
+                    <p class="text-gray-600 mb-4">Reparo e revitalização de estruturas danificadas por infiltrações e umidade.</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Recuperação estrutural</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Tratamento de patologias</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Reforma de fachadas</span>
                         </li>
                     </ul>
                 </div>
@@ -195,226 +374,282 @@
     </section>
 
     <!-- Products Section -->
-                
+    <section id="products" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nossos <span class="text-blue-600">Produtos</span></h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Comercializamos os melhores produtos do mercado para impermeabilização</p>
+            </div>
             
-            <div id="produtosdiv" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Product 1 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="h-48 bg-neutral-200 flex items-center justify-center">
-                        <i class="fas fa-medal text-5xl text-neutral-400"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300 fade-in fade-up">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-box-open text-6xl text-blue-600"></i>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-lg font-semibold mb-2 text-neutral-800">Manta Asfáltica Premium</h3>
-                        <p class="text-neutral-600 text-sm mb-4">Manta auto-aderente de alta resistência para telhados inclinados.</p>
+                        <h3 class="text-xl font-bold mb-2">Membrana Asfáltica</h3>
+                        <p class="text-gray-600 mb-4">Manta pré-fabricada com alta resistência para telhados e lajes. Disponíveis em diversas gramaturas.</p>
                         <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">A partir de R$ 45/m²</span>
+                            <a href="https://wa.me/5511999999999" class="text-blue-600 hover:text-blue-800">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Product 2 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="h-48 bg-neutral-200 flex items-center justify-center">
-                        <i class="fas fa-flag  text-5xl text-neutral-400"></i>
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300 fade-in fade-up">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-tint text-6xl text-blue-600"></i>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-lg font-semibold mb-2 text-neutral-800">Empresa Nacional</h3>
-                        <p class="text-neutral-600 text-sm mb-4">Empresa Brasileira, atuante em todo território nacional</p>
+                        <h3 class="text-xl font-bold mb-2">Impermeabilizante Líquido</h3>
+                        <p class="text-gray-600 mb-4">Solução em líquido para aplicação em piscinas, banheiros e áreas molhadas. Alta elasticidade.</p>
                         <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">A partir de R$ 120/galão</span>
+                            <a href="https://wa.me/5511999999999" class="text-blue-600 hover:text-blue-800">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Product 3 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <div class="h-48 bg-neutral-200 flex items-center justify-center">
-                        <i class="fas fa-crown text-5xl text-neutral-400"></i>
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300 fade-in fade-up">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-spray-can text-6xl text-blue-600"></i>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-lg font-semibold mb-2 text-neutral-800">+30 anos de atuação</h3>
-                        <p class="text-neutral-600 text-sm mb-4">Atuamos há 34 anos no mercado se especializando e evoluindo tecnologicamente.</p>
+                        <h3 class="text-xl font-bold mb-2">Poliureia</h3>
+                        <p class="text-gray-600 mb-4">Revestimento elastomérico de alta performance para áreas com tráfego intenso e piscinas.</p>
                         <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-medium">A partir de R$ 85/m²</span>
+                            <a href="https://wa.me/5511999999999" class="text-blue-600 hover:text-blue-800">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-                
+            </div>
+            
+            <div class="text-center mt-12 fade-in">
+                <a href="https://wa.me/5511999999999" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition duration-300">
+                    <i class="fab fa-whatsapp mr-2"></i> Solicite lista completa de produtos
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="sobre" class="py-16 bg-white">
+    <!-- Clients Section -->
+    <section class="py-16 bg-gray-100">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col lg:flex-row items-center">
-                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-12">
-                    <img src="midia/telhado02.jpeg" 
-                         alt="Equipe Imperconstru" 
-                         class="rounded-lg shadow-xl w-full">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Clientes e <span class="text-blue-600">Parceiros</span></h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Empresas que confiam em nosso trabalho e qualidade</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md flex items-center justify-center fade-in fade-up">
+                    <i class="fas fa-building text-4xl text-gray-600"></i>
                 </div>
-                <div class="lg:w-1/2">
-                    <h2 class="text-3xl font-bold mb-6 text-neutral-800">Sobre a <span class="text-primary">Imperconstru</span></h2>
-                    <p class="text-neutral-600 mb-6">Com mais de 30 anos de experiência no mercado, a Imperconstru se consolidou como referência em impermeabilização de telhados e lajes na região.</p>
-                    <p class="text-neutral-600 mb-6">Nossa equipe é composta por profissionais altamente qualificados e certificados, utilizando apenas materiais de primeira linha e técnicas atualizadas para garantir a melhor proteção para sua propriedade.</p>
-                    
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="bg-primary-light rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-medal text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-neutral-800">Qualidade Garantida</h4>
-                                <p class="text-neutral-600">Todos os nossos serviços possuem garantia contratual para sua tranquilidade.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-primary-light rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-award text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-neutral-800">Certificações</h4>
-                                <p class="text-neutral-600">Somos certificados pelos principais fabricantes de materiais de impermeabilização.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-primary-light rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-shield-alt text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-neutral-800">Segurança</h4>
-                                <p class="text-neutral-600">Trabalhamos com todos os equipamentos de segurança necessários para serviços em altura.</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="bg-white p-8 rounded-lg shadow-md flex items-center justify-center fade-in fade-up">
+                    <i class="fas fa-store text-4xl text-gray-600"></i>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md flex items-center justify-center fade-in fade-up">
+                    <i class="fas fa-hotel text-4xl text-gray-600"></i>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md flex items-center justify-center fade-in fade-up">
+                    <i class="fas fa-warehouse text-4xl text-gray-600"></i>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md flex items-center justify-center fade-in fade-up">
+                    <i class="fas fa-school text-4xl text-gray-600"></i>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md flex items-center justify-center fade-in fade-up">
+                    <i class="fas fa-hospital text-4xl text-gray-600"></i>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md flex items-center justify-center fade-in fade-up">
+                    <i class="fas fa-industry text-4xl text-gray-600"></i>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md flex items-center justify-center fade-in fade-up">
+                    <i class="fas fa-landmark text-4xl text-gray-600"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="py-16 bg-neutral-100">
+    <!-- Projects Gallery -->
+    <section id="projects" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4 text-neutral-800">Algumas obras <span class="text-primary">parceiras</span></h2>
-                <p class="text-neutral-600 max-w-2xl mx-auto">Algumas obras parceiras que realizamos neste ultimo ano</p>
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nossos <span class="text-blue-600">Projetos</span></h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Alguns dos nossos trabalhos recentes em impermeabilização e reformas</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card rounded-lg p-6 shadow-sm">
-                <img src="midia/penaltylogo.png" alt="">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="relative group overflow-hidden rounded-lg shadow-md fade-in fade-up">
+                    <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Projeto 1" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-white text-center p-4">
+                            <h3 class="text-xl font-bold">Shopping Center SP</h3>
+                            <p class="text-sm">Impermeabilização de cobertura</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card rounded-lg p-6 shadow-sm">
-                    <img src="midia/centernortelogo.jpg" alt="">
+                <div class="relative group overflow-hidden rounded-lg shadow-md fade-in fade-up">
+                    <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Projeto 2" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-white text-center p-4">
+                            <h3 class="text-xl font-bold">Condomínio Residencial</h3>
+                            <p class="text-sm">Reforma de fachada e impermeabilização</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card rounded-lg p-6 shadow-sm">
-                   <img src="midia/spmarketlogo.png" alt="">
+                <div class="relative group overflow-hidden rounded-lg shadow-md fade-in fade-up">
+                    <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Projeto 3" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-white text-center p-4">
+                            <h3 class="text-xl font-bold">Hotel Premium</h3>
+                            <p class="text-sm">Impermeabilização de piscinas</p>
+                        </div>
+                    </div>
                 </div>
+                
+                <div class="relative group overflow-hidden rounded-lg shadow-md fade-in fade-up">
+                    <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Projeto 4" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-white text-center p-4">
+                            <h3 class="text-xl font-bold">Edifício Corporativo</h3>
+                            <p class="text-sm">Impermeabilização de subsolo</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-lg shadow-md fade-in fade-up">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Projeto 5" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-white text-center p-4">
+                            <h3 class="text-xl font-bold">Residência de Luxo</h3>
+                            <p class="text-sm">Jardim de cobertura</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-lg shadow-md fade-in fade-up">
+                    <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Projeto 6" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-white text-center p-4">
+                            <h3 class="text-xl font-bold">Centro Comercial</h3>
+                            <p class="text-sm">Reforma completa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in">
+                <a href="https://wa.me/5511999999999" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition duration-300">
+                    <i class="fas fa-images mr-2"></i> Ver mais projetos
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contato" class="py-16 bg-white">
+    <section id="contact" class="py-16 bg-gray-100">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4 text-neutral-800">Entre em <span class="text-primary">Contato</span></h2>
-                <p class="text-neutral-600 max-w-2xl mx-auto">Solicite um orçamento ou tire suas dúvidas sobre nossos serviços e produtos.</p>
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Entre em <span class="text-blue-600">Contato</span></h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Estamos prontos para atender sua demanda com excelência</p>
             </div>
             
-            <div class="flex flex-col lg:flex-row">
-                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-12">
-                    <form class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-neutral-700 mb-2">Nome</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="lg:w-1/2 bg-white p-8 rounded-lg shadow-md fade-in fade-left">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Informações de Contato</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
-                                <label for="email" class="block text-neutral-700 mb-2">E-mail</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <h4 class="font-bold text-gray-800">Endereço</h4>
+                                <p class="text-gray-600">Av. Paulista, 1000 - São Paulo/SP</p>
                             </div>
                         </div>
-                        <div>
-                            <label for="phone" class="block text-neutral-700 mb-2">Telefone</label>
-                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Telefones</h4>
+                                <p class="text-gray-600">(11) 9999-9999 (WhatsApp)</p>
+                                <p class="text-gray-600">(11) 4000-0000 (Fixo)</p>
+                            </div>
                         </div>
-                        <div>
-                            <label for="subject" class="block text-neutral-700 mb-2">Assunto</label>
-                            <select id="subject" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <option value="">Selecione...</option>
-                                <option value="orcamento">Solicitar Orçamento</option>
-                                <option value="duvida">Tirar Dúvidas</option>
-                                <option value="outro">Outro</option>
-                            </select>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">E-mail</h4>
+                                <p class="text-gray-600">contato@Imperconstru.com.br</p>
+                            </div>
                         </div>
-                        <div>
-                            <label for="message" class="block text-neutral-700 mb-2">Mensagem</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Horário de Atendimento</h4>
+                                <p class="text-gray-600">Segunda a Sexta: 8h às 18h</p>
+                                <p class="text-gray-600">Sábado: 8h às 12h</p>
+                            </div>
                         </div>
-                        <button type="submit" class="w-full bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition">
-                            Enviar Mensagem
-                        </button>
-                    </form>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold text-gray-800 mb-4">Redes Sociais</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-blue-700 text-white p-3 rounded-full hover:bg-blue-800 transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="lg:w-1/2">
-                    <div class="bg-primary-light rounded-lg p-8 h-full">
-                        <br>
-                        <h3 class="text-xl font-semibold mb-6 text-neutral-800">Nossos <span class="text-primary">Contatos</span></h3>
-                        
-                        <div class="space-y-6">
-    
-                            <div class="flex items-start">
-                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-neutral-800 mb-1">Telefones</h4>
-                                    <p class="text-neutral-600">(11) 98206-7234 (WhatsApp)</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-neutral-800 mb-1">E-mail</h4>
-                                    <p class="text-neutral-600">contato@imperconstru.com.br</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-neutral-800 mb-1">Horário de Atendimento</h4>
-                                    <p class="text-neutral-600">Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
-                                </div>
-                            </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md mb-8 fade-in fade-right">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Localização</h3>
+                        <div class="h-64 bg-gray-200 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.287482568593!2d-46.65542692464493!3d-23.5613095788004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59cdc6f1f1a5%3A0x7c0f8a9f7a8b0d8e!2sAv.%20Paulista%2C%201000%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001310-100!5e0!3m2!1spt-BR!2sbr!4v1687891234567!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
-                        
-                        <div class="mt-8">
-                            <h4 class="font-semibold text-neutral-800 mb-4">Siga-nos nas redes sociais</h4>
-                            <div class="flex space-x-4">
-                                <a href="#" class="bg-white text-primary w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="bg-white text-primary w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="#" class="bg-white text-primary w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="#" class="bg-white text-primary w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                            </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-lg shadow-md fade-in fade-up">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Atendimento Rápido</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <a href="tel:+5511999999999" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300 flex items-center justify-center">
+                                <i class="fas fa-phone mr-2"></i> Ligar
+                            </a>
+                            <a href="https://wa.me/5511999999999" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300 flex items-center justify-center">
+                                <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -423,85 +658,76 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-neutral-800 text-neutral-300 py-12">
+    <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <img src="midia/logo.png" alt="Imperconstru - Serviços Especializados" style="max-width:150px ;">   
+                        <div class="bg-blue-600 text-white p-2 rounded mr-3">
+                            <i class="fas fa-building-shield text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Imper<span class="text-blue-400">Constru</span></h2>
                     </div>
-                    <p class="mb-4">Soluções profissionais em impermeabilização com qualidade e garantia.</p>
+                    <p class="text-gray-400 mb-4">Soluções em impermeabilização e reformas há 30 anos no mercado.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-neutral-300 hover:text-primary transition">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="text-neutral-300 hover:text-primary transition">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="text-neutral-300 hover:text-primary transition">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
                             <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
                 
                 <div>
-                    <h4 class="text-white font-semibold mb-4 text-lg">Links Úteis</h4>
+                    <h3 class="text-lg font-bold mb-4">Serviços</h3>
                     <ul class="space-y-2">
-                        <li><a href="#inicio" class="hover:text-primary transition">Início</a></li>
-                        <li><a href="#servicos" class="hover:text-primary transition">Serviços</a></li>
-                        <li><a href="#sobre" class="hover:text-primary transition">Sobre Nós</a></li>
-                        <li><a href="#contato" class="hover:text-primary transition">Contato</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Impermeabilização de Telhados</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Impermeabilização de Lajes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Impermeabilização de Piscinas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Reformas e Recuperação</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="text-white font-semibold mb-4 text-lg">Serviços</h4>
+                    <h3 class="text-lg font-bold mb-4">Links Úteis</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-primary transition">Impermeabilização de Telhados</a></li>
-                        <li><a href="#" class="hover:text-primary transition">Manutenção Preventiva</a></li>
-                        <li><a href="#" class="hover:text-primary transition">Impermeabilização de Lajes</a></li>
-                        <li><a href="#" class="hover:text-primary transition">Venda de Materiais</a></li>
-                        <li><a href="#" class="hover:text-primary transition">Consultoria Técnica</a></li>
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Início</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">Sobre</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Serviços</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-white transition duration-300">Projetos</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contato</a></li>
                     </ul>
                 </div>
                 
-                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Receba nossas novidades e dicas sobre impermeabilização.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Seu e-mail" class="bg-gray-800 text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-600 w-full">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-r-lg transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
             
-            <div class="border-t border-neutral-700 mt-12 pt-8 text-center">
-                <p>&copy; 2023 Imperconstru - Todos os direitos reservados.</p>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Imperconstru - Todos os direitos reservados. CNPJ: 00.000.000/0001-00</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-primary-dark transition hidden">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
     <script>
         // Mobile menu toggle
         document.getElementById('menu-toggle').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-
-        // Back to top button
-        const backToTopButton = document.getElementById('back-to-top');
-        
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.remove('hidden');
-            } else {
-                backToTopButton.classList.add('hidden');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
         // Smooth scrolling for anchor links
@@ -509,24 +735,44 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
                 
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                }
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
+
+        // Animation on scroll - improved version
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const checkVisibility = function() {
+            for (let i = 0; i < fadeElements.length; i++) {
+                const elem = fadeElements[i];
+                const rect = elem.getBoundingClientRect();
+                const elemTop = rect.top;
+                const elemBottom = rect.bottom;
+                
+                // Only add 'visible' class when element is in viewport
+                if (elemTop < window.innerHeight && elemBottom >= 0) {
+                    elem.classList.add('visible');
+                } else {
+                    // Remove 'visible' class when element is out of viewport
+                    // This allows the animation to trigger again when scrolling back
+                    elem.classList.remove('visible');
+                }
+            }
+        };
+        
+        // Run on initial load
+        checkVisibility();
+        
+        // Run on scroll
+        window.addEventListener('scroll', checkVisibility);
+        
+        // Run on resize (in case layout changes)
+        window.addEventListener('resize', checkVisibility);
     </script>
 </body>
 </html>
