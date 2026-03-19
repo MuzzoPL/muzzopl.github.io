@@ -1,0 +1,8 @@
+﻿src/components/EndRound.tsx(4,58): error TS6133: 'Crown' is declared but its value is never read.
+src/components/EndRound.tsx(4,65): error TS6133: 'Medal' is declared but its value is never read.
+src/components/EndRound.tsx(7,33): error TS6133: 'settings' is declared but its value is never read.
+src/components/PassPlay.tsx(4,23): error TS6133: 'RefreshCw' is declared but its value is never read.
+src/components/Setup.tsx(2,19): error TS1484: 'Player' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/components/ThemeSelection.tsx(3,18): error TS1484: 'Theme' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/context/GameContext.tsx(1,54): error TS1484: 'ReactNode' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/context/GameContext.tsx(2,10): error TS1484: 'Theme' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
